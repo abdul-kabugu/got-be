@@ -1,8 +1,8 @@
 // models/Player.js
-//const mongoose = require('mongoose');
-//const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-/*const PlayerSchema = new Schema({
+const PlayerSchema = new Schema({
   name: { type: String, required: true },
   position: { type: String, required: true }, // GK, FWD, DEF, MID
   club: { type: String, required: true },
@@ -15,10 +15,10 @@
   },
 });
 
-module.exports = mongoose.model('Player', PlayerSchema);*/
+module.exports = mongoose.model('Player', PlayerSchema);
 
 
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PlayerSchema = new Schema({
@@ -107,5 +107,5 @@ const PlayerSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Player', PlayerSchema);
+module.exports = mongoose.model('Player', PlayerSchema);*/
  

@@ -27,17 +27,33 @@ const registerPlayer =  asyncHandler(async (req, res)  =>  {
 
 })
 
-const getPlayers  = asyncHandler( async (req, res)  =>  {
+/*const getPlayers  = asyncHandler( async (req, res)  =>  {
 
 
   try {
     const players = await Player.find();
+
+    if (!players) {
+      return res.status(404).json({ message: 'Player not found' });
+    }
     res.status(200).json(players);
   } catch (error) {
     res.status(500).json({ message: error});
   }
-})
+})*/
 
+
+  // Fetch all players
+const getPlayers = asyncHandler(async (req, res) => {
+  try {
+    const players = await Player.find();
+    res.status(200).json(players);
+  } catch (error) {
+    res.status(500).json({ message: 'Hello  error  i  se you ', error: error.message });
+  }
+
+  
+})
 
 const getPlayerById = asyncHandler(async (req, res) => {
   const { id } = req.params;
