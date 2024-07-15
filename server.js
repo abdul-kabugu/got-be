@@ -15,7 +15,7 @@ app.use(cors())
 //app.use(express.json());
 app.use("/auth", require("./routes/AuthRoute"))
 app.use("/match", require("./routes/MatchRoute"))
-//app.use("/test", require("./routes/NewTest"))
+app.use("/tournaments", require("./routes/TournamentRoute"))
 
 
 
