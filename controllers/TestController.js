@@ -238,7 +238,29 @@ const getPlayResults =  asyncHandler(async (req, res)  =>  {
  })
 
 
+// Fetch all matches
+const getAllMatches = asyncHandler(async (req, res) => {
+  try {
+    const matches = await Match.find();
+    res.status(200).json(matches);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 
+// Fetch match by ID
+const getMatchById = asyncHandler(async (req, res) => {
+  const { matchId } = req.params;
+  try {
+    const match = await Match.findById(matchId);
+    if (!match) {
+      return res.status(404).json({ message: 'Match not found' });
+    }
+    res.status(200).json(match);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 
 
 
@@ -251,4 +273,4 @@ const getPlayResults =  asyncHandler(async (req, res)  =>  {
 
 
 module.exports  = {registerPlayer, getPlayResults, joinPlay, createPlay, addMatch, updatePlayer,
-   getUserResults, getPlayers, getPlayerById}
+   getUserResults, getPlayers, getPlayerById, getAllMatches, getMatchById}
