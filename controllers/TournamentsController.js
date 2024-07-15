@@ -12,7 +12,7 @@ const getAllTournaments = asyncHandler(async (req, res) => {
     const tournaments = await Tournament.find().populate('participants').populate('matchId');
     res.status(200).json(tournaments);
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error});
   }
 });
 
@@ -45,7 +45,7 @@ const getUserTournaments = asyncHandler(async (req, res) => {
       res.status(200).json(tournaments);
     } catch (error) {
       console.error(`Error fetching tournaments for user ${userId}:`, error);
-      res.status(500).json({ message: 'Server error' });
+      res.status(500).json({ message: error });
     }
   });
 
