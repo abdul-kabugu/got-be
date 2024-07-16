@@ -7,6 +7,7 @@ const TournamentSchema = new Schema({
   type: { type: String, enum: ['friendly', 'premium'], required: true },
   entryFee: { type: Number, default: 0 },
   status: { type: String, default: 'upcoming' },
+  cover : {type :  String},
   participants: [{
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
     squad: [{ type: Schema.Types.ObjectId, ref: 'Player' }],

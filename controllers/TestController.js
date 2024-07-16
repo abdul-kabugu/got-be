@@ -10,13 +10,16 @@ const  User =  require("../models/UserModel")
  
 const registerPlayer =  asyncHandler(async (req, res)  =>  {
 
-    const { name, position, club } = req.body;
+    const { name, position, club, age, image, nationality } = req.body;
 
     try {
       const newPlayer = new Player({
          name,
           position,
            club,
+           age,
+           image,
+           nationality
         
         });
       await newPlayer.save();

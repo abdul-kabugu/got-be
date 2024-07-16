@@ -6,6 +6,7 @@ const PlayerSchema = new Schema({
   name: { type: String, required: true },
   position: { type: String, required: true }, // GK, FWD, DEF, MID
   club: { type: String, required: true },
+  image: { type: String, required: true },
   age: {
     type: Number,
     required: false,
