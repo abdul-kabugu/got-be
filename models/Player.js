@@ -6,6 +6,30 @@ const PlayerSchema = new Schema({
   name: { type: String, required: true },
   position: { type: String, required: true }, // GK, FWD, DEF, MID
   club: { type: String, required: true },
+  age: {
+    type: Number,
+    required: false,
+  },
+  nationality: {
+    type: String,
+    required: false,
+  },
+  totalPoints: {
+    type: Number,
+    default: 0,
+  },
+  lastFiveGames: {
+    type: [Number], // Array of points from the last 5 games
+    default: [],
+  },
+  totalGameWeekPoints: {
+    type: Number,
+    default: 0,
+  },
+  level: {
+    type: Number,
+    default: 1,
+  },
   stats: {
     goals: { type: Number, default: 0 },
     assists: { type: Number, default: 0 },

@@ -27,20 +27,27 @@ const registerPlayer =  asyncHandler(async (req, res)  =>  {
 
 })
 
-/*const getPlayers  = asyncHandler( async (req, res)  =>  {
-
+const updateMatchStatus = asyncHandler(async (req, res) => {
+  const { matchId } = req.params;
+  const { status } = req.body;
 
   try {
-    const players = await Player.find();
-
-    if (!players) {
-      return res.status(404).json({ message: 'Player not found' });
+    // Find and update the match status
+    const match = await Match.findById(matchId);
+    if (!match) {
+      return res.status(404).json({ message: 'Match not found' });
     }
-    res.status(200).json(players);
+    match.status = status;
+    await match.save();
+
+    // Find and update the status of all tournaments linked to this match
+    const tournaments = await Tournament.updateMany({ matchId }, { status });
+
+    res.status(200).json({ match, updatedTournaments: tournaments });
   } catch (error) {
-    res.status(500).json({ message: error});
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
-})*/
+});
 
 
   // Fetch all players
@@ -289,4 +296,4 @@ const getMatchById = asyncHandler(async (req, res) => {
 
 
 module.exports  = {registerPlayer, getPlayResults, joinPlay, createPlay, addMatch, updatePlayer,
-   getUserResults, getPlayers, getPlayerById, getAllMatches, getMatchById}
+   getUserResults, getPlayers, getPlayerById, getAllMatches, getMatchById, updateMatchStatus}

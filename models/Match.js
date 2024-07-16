@@ -10,6 +10,7 @@ const TeamSchema = new Schema({
 const MatchSchema = new Schema({
   homeTeam: { type: TeamSchema, required: true },
   awayTeam: { type: TeamSchema, required: true },
+  status: { type: String, default: 'upcoming' },
   date: { type: Date, required: true },
   gameWeek: { type: Number, required: true },
   actions: [{

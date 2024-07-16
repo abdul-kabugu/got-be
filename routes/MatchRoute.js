@@ -1,5 +1,5 @@
 const  express =  require("express")
-const { registerPlayer, updatePlayer, addMatch, createPlay, joinPlay, getPlayResults, getUserResults,  getAllMatches, getMatchById } = require("../controllers/TestController")
+const { registerPlayer, updatePlayer, addMatch, createPlay, joinPlay, getPlayResults, getUserResults,  getAllMatches, getMatchById, updateMatchStatus } = require("../controllers/TestController")
 
   const  router  =  express.Router()
 
@@ -10,7 +10,7 @@ const { registerPlayer, updatePlayer, addMatch, createPlay, joinPlay, getPlayRes
     router.route("/:matchId").get(getMatchById)
     router.route("/update-player/:matchId").post(updatePlayer)
     router.route("/add-match").post(addMatch)
-
+    router.patch('/update/:matchId/status', updateMatchStatus);
     router.route("/create-tornament").post(createPlay)
     router.route("/tournament/:tournamentId/join").post(joinPlay)
     router.route("/results/:matchId").get(getPlayResults)
