@@ -51,4 +51,27 @@ const  getNonce = asyncHandler(async (req, res)  =>  {
     })
 
 
- module.exports = {getNonce, verifyNonce}
+    const getUser = asyncHandler(async (req, res) => {
+      const {profileId} = req.params
+
+       const user = await User.findById(profileId)
+
+       if(! user) {
+        return res.status(constants.NOT_FOUND).send("no user found")
+       }
+
+       res.status(200).send(user)
+     })
+
+
+     const getAllUsers  =  asyncHandler(async (req, res)  =>  {
+      const users = await User.find()
+
+       res.status(200).send(users)
+      
+    })
+
+
+
+
+ module.exports = {getNonce, verifyNonce, getUser, getAllUsers}

@@ -17,6 +17,8 @@ app.use("/auth", require("./routes/AuthRoute"))
 app.use("/match", require("./routes/MatchRoute"))
 app.use("/tournaments", require("./routes/TournamentRoute"))
 app.use("/players", require("./routes/PlayersRoute"))
+app.use("/post", require("./routes/PostRoute"))
+app.use("/comments", require("./routes/CommentRoute"))
 
 
 
